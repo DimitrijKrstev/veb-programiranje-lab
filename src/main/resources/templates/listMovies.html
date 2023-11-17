@@ -1,0 +1,55 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Movie Ticket Order page - Welcome and choose a Movie</title>
+  <style type="text/css">
+    body {
+      width: 800px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Welcome to our Movie Ticket Shop App</h1>
+</header>
+<main>
+  <h2>Choose movie:</h2>
+  <form th:method="GET" th:action="@{/ticketOrder}">
+    <ul th:each="movie : ${movies}">
+      <input type="radio" th:value="${movie.getTitle()}" th:text="${movie.getTitle()} + ', Summary:' +
+           ${movie.getSummary()} + ', Rating: ' + ${movie.getRating()} + ', Production:'
+           + ${movie.getProduction().getName()}"
+             name="movieTitle">
+      <br>
+      <a th:href="@{'/movies/edit-form/' + ${movie.getId()}}" title="Edit this movie"
+         class="fa-regular fa-pen-to-square icon-dark">Edit</a>
+
+      <a th:href="@{'/movies/delete/' + ${movie.getId()}}" id="btnDelete"
+         title="Delete this tutorial" class="fa-regular fa-trash-can icon-dark btn-delete">Delete</a>
+    </ul>
+    <h2>Choose number of tickets:</h2>
+    <input type="number" name="numTickets" min="1" max="10"><br/>
+    <br/>
+    <input type="submit" value="Submit">
+  </form>
+
+
+  <!-- Display radio buttons for each movie,
+          the value should be the movie title
+          and the displayed text should be Title: <movie_title>, Summary:<movie_summary>, Rating: <movie_rating> -->
+
+
+  <form th:method="GET">
+    <label>Search by title: </label>
+    <input type="text" placeholder="Title.." id="titleSearch" name="titleInput">
+    <label>Search by greater than rating: </label>
+    <input type="text" placeholder="Greater than rating" id="ratingSearch" name="ratingInput">
+    <input type="submit">
+  </form>
+
+  <a th:href="@{/movies/add}">Add new movie</a>
+
+</main>
+</body>
+</html>
