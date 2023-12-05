@@ -3,6 +3,7 @@ package mk.finki.ukim.mk.lab.bootstrap;
 import jakarta.annotation.PostConstruct;
 import mk.finki.ukim.mk.lab.model.Movie;
 import mk.finki.ukim.mk.lab.model.Production;
+import mk.finki.ukim.mk.lab.model.TicketOrder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,11 +12,13 @@ import java.util.List;
 public class DataHolder {
     public static List<Movie> movies = null;
     public static List<Production> productions = null;
+    public static List<TicketOrder> ticketOrders = null;
 
     @PostConstruct
     public void init() {
         movies = new ArrayList<>();
         productions = new ArrayList<>();
+        ticketOrders = new ArrayList<>();
 
         productions.add(new Production("20th Century Fox", "USA", "str. 1"));
         productions.add(new Production("Paramount Pictures", "USA", "str. 2"));

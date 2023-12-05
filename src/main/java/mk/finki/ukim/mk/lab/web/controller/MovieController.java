@@ -6,6 +6,8 @@ import mk.finki.ukim.mk.lab.model.Movie;
 import mk.finki.ukim.mk.lab.service.MovieService;
 import mk.finki.ukim.mk.lab.service.ProductionService;
 import mk.finki.ukim.mk.lab.service.TicketOrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +17,19 @@ import java.util.List;
 
 @Controller
 @RequestMapping({"/movies", "/"})
-@AllArgsConstructor
 public class MovieController {
     private final MovieService movieService;
     private final TicketOrderService ticketOrderService;
     private final ProductionService productionService;
+    private final String test;
+
+    @Autowired
+    public MovieController(@Qualifier("test2") String test, MovieService movieService, TicketOrderService ticketOrderService, ProductionService productionService) {
+        this.movieService = movieService;
+        this.ticketOrderService = ticketOrderService;
+        this.productionService = productionService;
+        this.test = test;
+    }
 
     @GetMapping
     public String getMoviesPage(HttpServletRequest request,
@@ -27,8 +37,6 @@ public class MovieController {
                                 @RequestParam(required = false) String ratingInput,
                                 Model model){
 
-//        Integer visits = (Integer) request.getServletContext().getAttribute("numberOfVisits");
-//        request.getServletContext().setAttribute("numberOfVisits", ++visits);
 
         List<Movie> movieList =
                 (titleInput == null || titleInput.isEmpty()) ? movieService.listAll() :
@@ -36,14 +44,14 @@ public class MovieController {
                                 movieService.searchMovies(titleInput, Float.parseFloat(ratingInput));
 
         model.addAttribute("movies", movieList);
-//        model.addAttribute("visits", visits);
+
+        System.out.println(test);
 
         return "listMovies";
     }
 
     @GetMapping("/add")
     public String getAddMoviePage(@RequestParam(required = false) String error, Model model){
-        //producers
         model.addAttribute("producers", productionService.findAll());
         model.addAttribute("action", "add");
 

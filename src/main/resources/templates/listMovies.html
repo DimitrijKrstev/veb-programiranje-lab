@@ -15,7 +15,7 @@
 </header>
 <main>
   <h2>Choose movie:</h2>
-  <form th:method="GET" th:action="@{/ticketOrder}">
+  <form th:method="POST" th:action="@{/ticketOrder/placeOrder}">
     <ul th:each="movie : ${movies}">
       <input type="radio" th:value="${movie.getTitle()}" th:text="${movie.getTitle()} + ', Summary:' +
            ${movie.getSummary()} + ', Rating: ' + ${movie.getRating()} + ', Production:'

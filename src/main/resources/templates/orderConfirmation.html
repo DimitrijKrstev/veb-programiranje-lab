@@ -21,7 +21,8 @@
     <header>
         <h1>Movie Order page - Order confirmation </h1>
     </header>
-    <table>
+        <table th:each="order : ${orders}">
+            <form th:method="POST" th:action="@{'/ticketOrder/' + ${order.getMovieTitle()}}">
         <tr>
             <th colspan="2">
                 Your Order Status
@@ -43,7 +44,12 @@
             <td><b>Number of tickets</b></td>
             <td th:text="${order.getNumberOfTickets()}"></td>
         </tr>
-    </table>
+            <label for="rating">Enter Rating: </label>
+            <input id="rating" type="text" name="rating">
+            <input type="submit" name="MovieTitle" th:value="${order.getMovieTitle()}">Enter</input>
+            <br>
+            </form>
+        </table>
 </section>
 </body>
 </html>
