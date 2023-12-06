@@ -1,19 +1,23 @@
 package mk.finki.ukim.mk.lab.model;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Data
+@Builder
+@Entity
+@Table(name = "movies")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+// @Data as this generates equals, hashCode and toString methods, which in the case of jpa entities should be hand generated.
 public class Movie {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String summary;
     private double rating;
-    private Production production;
 
-    public Movie(String title, String summary, double rating, Production production) {
-        this.title = title;
-        this.summary = summary;
-        this.rating = rating;
-        this.production = production;
-        this.id = (long) (Math.random() * 1000);
-    }
+    @ManyToOne
+    private Production production;
 }

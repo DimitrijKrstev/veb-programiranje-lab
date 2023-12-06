@@ -12,8 +12,8 @@ public class TicketOrderServiceImpl implements TicketOrderService {
     private final MovieService movieService;
 
     @Override
-    public TicketOrder placeOrder(String movieTitle, String clientName, String address, int numberOfTickets) {
-        TicketOrder order = new TicketOrder(movieTitle, clientName, address, numberOfTickets);
+    public TicketOrder placeOrder(String movieTitle, String clientName, int numberOfTickets) {
+        TicketOrder order = null; // new TicketOrder(movieTitle, clientName, address, numberOfTickets);
         return order;
     }
 }

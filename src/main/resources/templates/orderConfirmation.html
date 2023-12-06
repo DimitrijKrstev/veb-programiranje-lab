@@ -27,22 +27,21 @@
                 Your Order Status
             </th>
         </tr>
-        <tr>
-            <td><b>Client Name </b></td>
-            <td>Petko Petkov</td>
-        </tr>
-        <tr>
-            <td><b>Client IP Address</b></td>
-            <td th:text="${order.getClientAddress()}">127.0.0.1</td>
-        </tr>
-        <tr>
-            <td><b>Ticket for Movie</b></td>
-            <td th:text="${order.getMovieTitle()}"></td>
-        </tr>
-        <tr>
-            <td><b>Number of tickets</b></td>
-            <td th:text="${order.getNumberOfTickets()}"></td>
-        </tr>
+        <form>
+            <tr>
+                <td><b>Client Name </b></td>
+                <td th:text="test"></td>
+            </tr>
+            <tr>
+                <td><b>Ticket for Movie</b></td>
+                <td th:text="${order.getMovieTitle()}"></td>
+            </tr>
+            <tr>
+                <td><b>Number of tickets</b></td>
+                <td th:text="${order.getNumberOfTickets()}"></td>
+            </tr>
+            <input type="datetime-local"/>
+        </form>
     </table>
 </section>
 </body>

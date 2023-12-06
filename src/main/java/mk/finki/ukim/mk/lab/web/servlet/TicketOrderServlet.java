@@ -1,4 +1,4 @@
-package mk.finki.ukim.mk.lab.web;
+package mk.finki.ukim.mk.lab.web.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -30,7 +30,7 @@ public class TicketOrderServlet extends HttpServlet {
         WebContext context =  new WebContext(webExchange);
 
         if(req.getParameter("movieTitle") != null)context.setVariable("order", ticketOrderService.placeOrder(req.getParameter("movieTitle"),
-                "abc", req.getRemoteAddr(), Integer.parseInt(req.getParameter("numTickets"))));
+                "abc", Integer.parseInt(req.getParameter("numTickets"))));
 
         springTemplateEngine.process(
                 "orderConfirmation.html",

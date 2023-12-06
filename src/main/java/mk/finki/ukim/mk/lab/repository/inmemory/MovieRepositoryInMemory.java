@@ -1,5 +1,4 @@
-package mk.finki.ukim.mk.lab.repository;
-import lombok.AllArgsConstructor;
+package mk.finki.ukim.mk.lab.repository.inmemory;
 import mk.finki.ukim.mk.lab.bootstrap.DataHolder;
 import mk.finki.ukim.mk.lab.model.Movie;
 import org.springframework.stereotype.Repository;
@@ -7,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Repository
-public class MovieRepository {
+//@Repository
+public class MovieRepositoryInMemory {
 
     public List<Movie> findAll(){
         return DataHolder.movies;
@@ -22,7 +21,7 @@ public class MovieRepository {
                 .collect(Collectors.toList());
     }
 
-    public void add(Movie movie){
+    public void addMovie(Movie movie){
         DataHolder.movies.add(movie);
     }
 

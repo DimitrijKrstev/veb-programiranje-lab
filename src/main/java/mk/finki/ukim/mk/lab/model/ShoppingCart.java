@@ -2,27 +2,30 @@ package mk.finki.ukim.mk.lab.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import mk.finki.ukim.mk.lab.model.enumerations.ShoppingCartStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table(name="productions")
+@Table(name="ShoppingCart")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-public class TicketOrder {
+public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     private User user;
+    @ManyToMany
+    private List<TicketOrder> ticketOrders;
     @DateTimeFormat(pattern = "yyyy-MM-ddHH:mm:ss")
-    private LocalDateTime orderDate;
+    private LocalDateTime dateCreated;
 
-    private String movieTitle;
-    private Integer numberOfTickets;
+    ShoppingCartStatus status;
 }

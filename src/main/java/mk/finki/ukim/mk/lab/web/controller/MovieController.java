@@ -27,23 +27,20 @@ public class MovieController {
                                 @RequestParam(required = false) String ratingInput,
                                 Model model){
 
-//        Integer visits = (Integer) request.getServletContext().getAttribute("numberOfVisits");
-//        request.getServletContext().setAttribute("numberOfVisits", ++visits);
-
         List<Movie> movieList =
                 (titleInput == null || titleInput.isEmpty()) ? movieService.listAll() :
                         (ratingInput == null || ratingInput.isEmpty()) ? movieService.searchMovies(titleInput) :
                                 movieService.searchMovies(titleInput, Float.parseFloat(ratingInput));
 
         model.addAttribute("movies", movieList);
-//        model.addAttribute("visits", visits);
+
+        System.out.println(movieService.listAll());
 
         return "listMovies";
     }
 
     @GetMapping("/add")
-    public String getAddMoviePage(@RequestParam(required = false) String error, Model model){
-        //producers
+    public String getAddMoviePage(@RequestParam(required = false) Model model){
         model.addAttribute("producers", productionService.findAll());
         model.addAttribute("action", "add");
 

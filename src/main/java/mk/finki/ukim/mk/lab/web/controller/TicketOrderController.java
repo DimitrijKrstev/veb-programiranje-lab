@@ -17,8 +17,8 @@ public class TicketOrderController {
     @GetMapping
     public String displayOrder(HttpServletRequest req, Model model){
 
-        if(req.getParameter("movieTitle") != null) model.addAttribute("order", ticketOrderService
-                .placeOrder(req.getParameter("movieTitle"), "abc", req.getRemoteAddr(),
+        if(req.getParameter("movieTitle") != null) model.addAttribute("order",
+                ticketOrderService.placeOrder(req.getParameter("movieTitle"), "abc",
                         Integer.parseInt(req.getParameter("numTickets"))));
 
 
