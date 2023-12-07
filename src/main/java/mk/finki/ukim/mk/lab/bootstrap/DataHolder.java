@@ -3,8 +3,10 @@ package mk.finki.ukim.mk.lab.bootstrap;
 import jakarta.annotation.PostConstruct;
 import mk.finki.ukim.mk.lab.model.Movie;
 import mk.finki.ukim.mk.lab.model.Production;
+import mk.finki.ukim.mk.lab.model.User;
 import mk.finki.ukim.mk.lab.repository.jpa.MovieRepository;
 import mk.finki.ukim.mk.lab.repository.jpa.ProductionRepository;
+import mk.finki.ukim.mk.lab.repository.jpa.UserRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,13 +15,15 @@ import java.util.List;
 public class DataHolder {
     ProductionRepository productionRepository;
     MovieRepository movieRepository;
+    UserRepository userRepository;
 
     public static List<Movie> movies = null;
     public static List<Production> productions = null;
 
-    public DataHolder(ProductionRepository productionRepository, MovieRepository movieRepository) {
+    public DataHolder(ProductionRepository productionRepository, MovieRepository movieRepository, UserRepository userRepository) {
         this.productionRepository = productionRepository;
         this.movieRepository = movieRepository;
+        this.userRepository = userRepository;
     }
 
     @PostConstruct
@@ -72,5 +76,6 @@ public class DataHolder {
 
         productionRepository.saveAll(productions);
         movieRepository.saveAll(movies);
+        userRepository.save(User.builder().username("dimi").password("dimi").build());
     }
 }

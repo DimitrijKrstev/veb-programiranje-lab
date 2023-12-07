@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping({"/movies", "/"})
+@RequestMapping({"/movies"})
 @AllArgsConstructor
 public class MovieController {
     private final MovieService movieService;

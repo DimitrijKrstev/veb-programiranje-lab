@@ -23,20 +23,20 @@ public class TicketOrderServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        IWebExchange webExchange = JakartaServletWebApplication
-                .buildApplication(getServletContext())
-                .buildExchange(req, resp);
-
-        WebContext context =  new WebContext(webExchange);
-
-        if(req.getParameter("movieTitle") != null)context.setVariable("order", ticketOrderService.placeOrder(req.getParameter("movieTitle"),
-                "abc", Integer.parseInt(req.getParameter("numTickets"))));
-
-        springTemplateEngine.process(
-                "orderConfirmation.html",
-                context,
-                resp.getWriter()
-        );
+//        IWebExchange webExchange = JakartaServletWebApplication
+//                .buildApplication(getServletContext())
+//                .buildExchange(req, resp);
+//
+//        WebContext context =  new WebContext(webExchange);
+//
+//        if(req.getParameter("movieTitle") != null)context.setVariable("order", ticketOrderService.placeOrder(req.getParameter("movieTitle"),
+//                "abc", Integer.parseInt(req.getParameter("numTickets"))));
+//
+//        springTemplateEngine.process(
+//                "orderConfirmation.html",
+//                context,
+//                resp.getWriter()
+//        );
     }
 
 }

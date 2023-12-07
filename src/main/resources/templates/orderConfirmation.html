@@ -21,28 +21,30 @@
     <header>
         <h1>Movie Order page - Order confirmation </h1>
     </header>
-    <table>
-        <tr>
-            <th colspan="2">
-                Your Order Status
-            </th>
-        </tr>
-        <form>
+
+    <form th:method="POST">
+        <table>
             <tr>
-                <td><b>Client Name </b></td>
-                <td th:text="test"></td>
+                <th colspan="2">
+                    Your Order Status
+                </th>
             </tr>
-            <tr>
-                <td><b>Ticket for Movie</b></td>
-                <td th:text="${order.getMovieTitle()}"></td>
-            </tr>
-            <tr>
-                <td><b>Number of tickets</b></td>
-                <td th:text="${order.getNumberOfTickets()}"></td>
-            </tr>
-            <input type="datetime-local"/>
-        </form>
-    </table>
+                <tr>
+                    <td><b>Client Name </b></td>
+                    <td th:text="${order.getUser().getFullname()}"></td>
+                </tr>
+                <tr>
+                    <td><b>Ticket for Movie</b></td>
+                    <td th:text="${order.getMovieTitle()}"></td>
+                </tr>
+                <tr>
+                    <td><b>Number of tickets</b></td>
+                    <td th:text="${order.getNumberOfTickets()}"></td>
+                </tr>
+        </table>
+        <input type="datetime-local"/>
+        <input type="submit" value="submit">
+    </form>
 </section>
 </body>
 </html>
