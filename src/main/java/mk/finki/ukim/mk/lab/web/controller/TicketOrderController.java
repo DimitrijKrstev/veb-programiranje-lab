@@ -30,6 +30,8 @@ public class TicketOrderController {
     @PostMapping
     public String placeOrder(HttpServletRequest req){
 
+        System.out.println(req.getSession().getAttribute("user"));
+
         ticketOrderService.placeOrder(req.getParameter("movieTitle"),
                 (User) req.getSession().getAttribute("user"),
                 Integer.parseInt(req.getParameter("numTickets")));

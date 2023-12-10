@@ -57,6 +57,7 @@ public class MovieServiceImpl implements MovieService {
                     m.setSummary(summary);
                     m.setRating(Double.parseDouble(rating));
                     m.setProduction(prod);
+                    movieRepository.save(m);
                 }
         );
     }

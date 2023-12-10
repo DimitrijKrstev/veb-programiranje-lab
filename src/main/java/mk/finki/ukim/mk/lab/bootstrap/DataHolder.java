@@ -37,13 +37,6 @@ public class DataHolder {
         productions.add(Production.builder().name("DreamWorks Pictures").country("USA").address("str. 4").build());
         productions.add(Production.builder().name("Lionsgate").country("USA").address("str. 5").build());
 
-//        productions.add(new Production("20th Century Fox", "USA", "str. 1"));
-//        productions.add(new Production("Paramount Pictures", "USA", "str. 2"));
-//        productions.add(new Production("Warner Bros", "USA", "str. 3"));
-//        productions.add(new Production("DreamWorks Pictures", "USA", "str. 4"));
-//        productions.add(new Production("Lionsgate", "USA", "str. 5"));
-
-
         movies.add(Movie.builder().title("Inception").summary("mind-bending thriller").rating(9.3)
                 .production(productions.get((int) (Math.random() * 5))).build());
 

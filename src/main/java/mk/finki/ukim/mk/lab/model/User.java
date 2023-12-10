@@ -2,6 +2,7 @@ package mk.finki.ukim.mk.lab.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.context.annotation.Scope;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Setter
 @Getter
+@Scope("session")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

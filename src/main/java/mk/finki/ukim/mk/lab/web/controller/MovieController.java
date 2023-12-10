@@ -6,6 +6,7 @@ import mk.finki.ukim.mk.lab.model.Movie;
 import mk.finki.ukim.mk.lab.service.MovieService;
 import mk.finki.ukim.mk.lab.service.ProductionService;
 import mk.finki.ukim.mk.lab.service.TicketOrderService;
+import mk.finki.ukim.mk.lab.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,7 @@ public class MovieController {
     private final ProductionService productionService;
 
     @GetMapping
-    public String getMoviesPage(HttpServletRequest request,
-                                @RequestParam(required = false) String titleInput,
+    public String getMoviesPage(@RequestParam(required = false) String titleInput,
                                 @RequestParam(required = false) String ratingInput,
                                 Model model){
 
@@ -34,13 +34,11 @@ public class MovieController {
 
         model.addAttribute("movies", movieList);
 
-        System.out.println(movieService.listAll());
-
         return "listMovies";
     }
 
     @GetMapping("/add")
-    public String getAddMoviePage(@RequestParam(required = false) Model model){
+    public String getAddMoviePage(Model model){
         model.addAttribute("producers", productionService.findAll());
         model.addAttribute("action", "add");
 
@@ -52,7 +50,7 @@ public class MovieController {
     public String saveMovie(HttpServletRequest request) {
         movieService.add(request.getParameter("movieTitle"),
                 request.getParameter("summary"),
-                request.getParameter("rating"),
+                request.getParameter("movieRating"),
                 request.getParameter("productionId"));
 
         return "redirect:/movies";
@@ -62,8 +60,10 @@ public class MovieController {
     public String editMovie(@PathVariable Long movieId, HttpServletRequest request, Model model){
         String title = request.getParameter("movieTitle");
         String summary = request.getParameter("summary");
-        String rating = request.getParameter("rating");
+        String rating = request.getParameter("movieRating");
         String productionId = request.getParameter("productionId");
+
+        System.out.println("TESTTTT");
 
         movieService.editMovieById(movieId, title, summary, rating, productionId);
 

@@ -14,7 +14,6 @@
 </head>
 <body>
 <div class="flex">
-    <h1>Orders for user <span th:text="cart.getUser().username"></span>:</h1>
     <div th:each="order : ${cart.getTicketOrders()}" class="flex" style="border: solid 1px black">
         <div>Movie: <span th:text="${order.getMovieTitle()}"></span></div>
         <div>Number of tickets: <span th:text="order.getNumberOfTickets()"></span></div>

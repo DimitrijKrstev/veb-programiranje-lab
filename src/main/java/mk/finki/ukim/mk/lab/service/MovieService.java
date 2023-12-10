@@ -9,9 +9,6 @@ public interface MovieService {
     List<Movie> listAll();
     List<Movie> searchMovies(String text);
     List<Movie> searchMovies(String text, Float rating);
-//    Movie getMostPopular();
-//    void addTicket(String text, TicketOrder ticketOrder);
-
     void add(String title, String summary, String rating, String productionId);
     void editMovieById(Long movieId, String title, String summary, String rating, String productionId);
     void deleteById(Long id);
