@@ -25,9 +25,10 @@ public class User {
     private UserFullName fullname;
     private String username;
     private String password;
+    private String role;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate dateOfBirth;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "movie_users")
     private List<ShoppingCart> carts;
 }

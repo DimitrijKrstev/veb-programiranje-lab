@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@Data
 // @Data as this generates equals, hashCode and toString methods, which in the case of jpa entities should be hand generated.
 public class Movie {
     @Id

@@ -20,8 +20,6 @@ public class AuthController {
     @GetMapping
     public String getLoginPage(HttpServletRequest request){
         request.getSession().setAttribute("user", userService.getUserByUsername("dimi"));
-        request.getSession().setAttribute(Constant.USER, userService.getUserByUsername("dimi"));
-        request.getSession().getAttribute(Constant.USER);
         return request.getSession().getAttribute("user") == null ? "login" : "redirect:/movies";
     }
 
