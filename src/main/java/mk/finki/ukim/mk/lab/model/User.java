@@ -29,6 +29,6 @@ public class User {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate dateOfBirth;
 
-    @OneToMany(mappedBy = "movie_users")
+    @OneToMany(mappedBy = "user")
     private List<ShoppingCart> carts;
 }

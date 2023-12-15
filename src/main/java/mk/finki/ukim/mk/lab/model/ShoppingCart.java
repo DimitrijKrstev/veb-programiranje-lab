@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name="ShoppingCart")
 @Builder
+@Table
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
