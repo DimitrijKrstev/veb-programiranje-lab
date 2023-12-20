@@ -20,7 +20,7 @@ public class ShoppingCart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private User user;
     @ManyToMany
     private List<TicketOrder> ticketOrders;

@@ -18,7 +18,9 @@ public class TicketOrderController {
     private final TicketOrderService ticketOrderService;
 
     @GetMapping
-    public String displayOrder(HttpServletRequest req, Model model){
+    public String displayOrder(HttpServletRequest req, Model model, HttpServletRequest request){
+
+        System.out.println(request.getSession().getAttribute("user"));
 
         model.addAttribute("order", TicketOrder.builder()
                 .movieTitle(req.getParameter("movieTitle"))

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
-    List<Movie> findAllByTitleLike(String text);
+    List<Movie> findAllByTitleContainingIgnoreCase(String text);
 
     List<Movie> findAllByRating(Double rating);
 

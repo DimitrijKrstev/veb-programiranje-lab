@@ -3,9 +3,7 @@ package mk.finki.ukim.mk.lab.web.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import mk.finki.ukim.mk.lab.model.User;
-import mk.finki.ukim.mk.lab.repository.jpa.UserRepository;
 import mk.finki.ukim.mk.lab.service.UserService;
-import org.h2.schema.Constant;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +18,7 @@ public class AuthController {
     @GetMapping
     public String getLoginPage(HttpServletRequest request){
         request.getSession().setAttribute("user", userService.getUserByUsername("dimi"));
+        System.out.println(request.getSession().getAttribute("user"));
         return request.getSession().getAttribute("user") == null ? "login" : "redirect:/movies";
     }
 

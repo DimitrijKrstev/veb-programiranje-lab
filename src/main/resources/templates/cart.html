@@ -9,14 +9,15 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            font-family: "Roboto Light",sans-serif;
         }
     </style>
 </head>
 <body>
 <div class="flex">
-    <div th:each="order : ${cart.getTicketOrders()}" class="flex" style="border: solid 1px black">
+    <h1>Shoppin cart for user: <span th:text="${user.getUsername()}"></span></h1>
+    <div th:each="order : ${orders}" class="flex" style="border: solid 1px black">
         <div>Movie: <span th:text="${order.getMovieTitle()}"></span></div>
-        <div>Number of tickets: <span th:text="order.getNumberOfTickets()"></span></div>
     </div>
 </div>
 </body>

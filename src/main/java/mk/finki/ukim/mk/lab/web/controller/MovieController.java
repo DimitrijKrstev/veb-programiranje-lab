@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import mk.finki.ukim.mk.lab.model.Movie;
 import mk.finki.ukim.mk.lab.service.MovieService;
 import mk.finki.ukim.mk.lab.service.ProductionService;
-import mk.finki.ukim.mk.lab.service.TicketOrderService;
-import mk.finki.ukim.mk.lab.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +17,12 @@ import java.util.List;
 @AllArgsConstructor
 public class MovieController {
     private final MovieService movieService;
-    private final TicketOrderService ticketOrderService;
     private final ProductionService productionService;
 
     @GetMapping
     public String getMoviesPage(@RequestParam(required = false) String titleInput,
                                 @RequestParam(required = false) String ratingInput,
+                                HttpServletRequest request,
                                 Model model){
 
         List<Movie> movieList =

@@ -1,29 +1,31 @@
 package mk.finki.ukim.mk.lab.bootstrap;
 
 import jakarta.annotation.PostConstruct;
-import mk.finki.ukim.mk.lab.model.Movie;
-import mk.finki.ukim.mk.lab.model.Production;
-import mk.finki.ukim.mk.lab.model.User;
+import mk.finki.ukim.mk.lab.model.*;
 import mk.finki.ukim.mk.lab.repository.jpa.MovieRepository;
 import mk.finki.ukim.mk.lab.repository.jpa.ProductionRepository;
+import mk.finki.ukim.mk.lab.repository.jpa.ShoppingCartRepository;
 import mk.finki.ukim.mk.lab.repository.jpa.UserRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 @Component
 public class DataHolder {
     ProductionRepository productionRepository;
     MovieRepository movieRepository;
     UserRepository userRepository;
+    ShoppingCartRepository shoppingCartRepository;
 
     public static List<Movie> movies = null;
     public static List<Production> productions = null;
 
-    public DataHolder(ProductionRepository productionRepository, MovieRepository movieRepository, UserRepository userRepository) {
+    public DataHolder(ProductionRepository productionRepository, MovieRepository movieRepository, UserRepository userRepository, ShoppingCartRepository shoppingCartRepository) {
         this.productionRepository = productionRepository;
         this.movieRepository = movieRepository;
         this.userRepository = userRepository;
+        this.shoppingCartRepository = shoppingCartRepository;
     }
 
     @PostConstruct
@@ -69,6 +71,14 @@ public class DataHolder {
 
         productionRepository.saveAll(productions);
         movieRepository.saveAll(movies);
-        userRepository.save(User.builder().username("dimi").password("dimi").build());
+
+        ShoppingCart cart = ShoppingCart.builder().ticketOrders(new ArrayList<>()).build();
+        User dimi = User.builder().username("dimi").password("dimi")
+                .carts(new ArrayList<>()).build();
+        dimi.getCarts().add(cart);
+        cart.setUser(dimi);
+
+        shoppingCartRepository.save(cart);
+        userRepository.save(dimi);
     }
 }

@@ -24,7 +24,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<Movie> searchMovies(String text) {
-        return movieRepository.findAllByTitleLike(text);
+        return movieRepository.findAllByTitleContainingIgnoreCase(text);
     }
 
     @Override
